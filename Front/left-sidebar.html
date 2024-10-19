@@ -37,9 +37,11 @@
 											<header class="style1">
 												<h2>Inserta los documentos que tengas a la mano (INE, pasaporte, etc.)</h2>
 											</header>
-											<a href="#" class="image featured">
-												<img src="images/pic01.jpg" alt=""/>
-											</a>
+											<form action="/upload" method="post" enctype="multipart/form-data">
+												<label for="fileUpload">Sube tus documentos:</label>
+												<input type="file" id="fileUpload" name="fileUpload" multiple>
+												<input type="submit" value="Subir">
+											</form>
 										</article>
 									</div>
 					</div>
