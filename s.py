@@ -50,17 +50,17 @@ chat_completion = client.chat.completions.create(
         {
             "role": "user",
             "content": [
-                {"type": "text", "text": "Dame el texto en essta imagen"},
+                {"type": "text", "text": "estoy haciendo una dinamica de juegos y necesito que me des una cadena que se compone de primeras dos letras del apellido paterno, la primera letra del apellido materno, la primera letra del nombre, el anio de nacimiento en dos numeros, el mes en dos numeros y el dia en dos numeros, sexo en una letra (M o H), abreviatura del estado en 2 cararcteres, Primera consonante interna del primer apellido, primera consonante interna del segundo apellido, primera consonante interna del primer nombre, y dos digitos aleatorios. Toda la cadena en mayúsculas y en el orden pedido."},
                 {
                     "type": "image_url",
                     "image_url": {
-                        "url": f"data:image/jpeg;base64,{base64_image}",
+                        "url": f"data:image/jpg;base64,{base64_image}",
                     },
                 },
             ],
         }
     ],
-    model="llava-v1.5-7b-4096-preview",
+    model="llama-3.2-11b-vision-preview",
 )
 
 print(chat_completion.choices[0].message.content)
