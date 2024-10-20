@@ -1270,8 +1270,8 @@ input[type=reset],
 button,
 .button {
   transition: all .25s ease-in-out;
-  display: block;
-  margin: 0 auto;
+  display:block;
+  margin-left:10em;
   background: #444;
   text-align: center;
   text-transform: uppercase;
@@ -2202,11 +2202,8 @@ ul.actions.special {
   input[type=reset],
   button,
   .button {
-    display: block;
-    width: 100%;
-    font-size: 1em;
-    max-width: 30em;
-    margin: 0 auto;
+    width: auto; /* Asegúrate de que el ancho del botón no sea 100% */
+    margin: 0 auto; /* Esto asegura que el botón esté centrado */
   }
   /* Actions */
   ul.actions {
