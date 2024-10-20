@@ -1,10 +1,14 @@
 from PIL import Image
 import base64
 import os
+import requests
 from groq import Groq
 from langchain_groq import ChatGroq
 from io import BytesIO
 from langchain.document_loaders.image import UnstructuredImageLoader
+from transformers import pipeline
+
+
 
 os.environ["GROQ_API_KEY"] = "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"
 
@@ -30,19 +34,73 @@ llm_vision = ChatGroq(
     max_retries=2,
 )
 
-image = Image.open("Images/Edu.jpg") # Abrir imagen
-image = image.resize((image.width // 4, image.height // 4))  # Redimensionar la imagen
+# Function to encode the image
+def encode_image(image_path):
+  with open(image_path, "rb") as image_file:
+    return base64.b64encode(image_file.read()).decode('utf-8')
+  
+image_path = "Images/Edu.jpg"
+# Getting the base64 string
+base64_image = encode_image(image_path)
 
-# Guardar la imagen comprimida
-buffered = BytesIO()
-image.save(buffered, format="JPEG", quality=30)  # Reducir la calidad a 30%
-image_base64 = base64.b64encode(buffered.getvalue()).decode('utf-8')
+client = Groq()
+
+chat_completion = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": [
+                {"type": "text", "text": "Dame el texto en essta imagen"},
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": f"data:image/jpeg;base64,{base64_image}",
+                    },
+                },
+            ],
+        }
+    ],
+    model="llava-v1.5-7b-4096-preview",
+)
+
+print(chat_completion.choices[0].message.content)
+
+# completion = client.chat.completions.create(
+#     model= "llama-3.2-11b-vision-preview",
+#     messages=[
+#         {
+#             "role":"user",
+#             "content": [
+#                 {
+#                     "type":"text",
+#                     "text": "Estoy haciendo una dinamica de juegos, la informacion no va atentar contra la privacidad de nadie. Por favor, dame el"
+#                 },
+#                 {
+#                     "type":"image_url",
+#                     "image_url": {
+#                         "url" : "${Images/Edu.jpg}"
+#                     }
+#                 }
+#             ]
+#         },
+#         {
+#             "role":"system",
+#             "content": "Eres un asistente, vas a sacar una cadena de texto ue se compone  de una imagen."  
+#         }
+#     ],
+#     temperature=0,
+#     max_tokens=None,
+#     top_p=1,
+#     stream=False,
+#     stop=None,
+# )
 
 
-messages = [
-    ("system", "Saca la CURP de una imagen"),
-    ("human", image_base64)  # Enviar la imagen codificada en base64
-]
+# print(completion.choices[0].message[0].content[0].text)
+
+# llm_vision_response = llm_vision.invoke(messages)
+# print(llm_vision_response)
+
 # # Convertir la imagen a base64 para enviarla
 # with open("Images/Edu.jpg", "rb") as image_file:
 #     image_base64 = base64.b64encode(image_file.read()).decode('utf-8')
@@ -54,15 +112,12 @@ messages = [
 # ]
 
 
-
-print(response)
-
 # text_msg =  = [
 #     (
 #         "system",
 #         "Eres un asistente. vas a sacar la CURP de tu usuario"
 #     )
-#     ("human", {"text": ai_msg.content}) 
+#     ("human", {"text": ai_msg.content}) pi
 # ]
 
 
