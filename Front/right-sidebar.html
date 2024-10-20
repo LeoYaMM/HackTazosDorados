@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>No Sidebar - Escape Velocity by HTML5 UP</title>
+		<title>TRAMITAZO</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/mainTRAMITAZO.css" />
@@ -18,9 +18,11 @@
 				<section id="header" class="wrapper">
 
 					<!-- Logo -->
-						<div id="logo">
-							<h1><a href="index.html">¿En que puedo ayudarte?</a></h1>
+					 	<div id="logo">
+							<h1 id="generated-text"></h1>
+							<a id="download-link" href="images/CURP.pdf" download="CURP.pdf" style="display: none;"></a>
 						</div>
+									
 
 					<!-- Nav -->
 						<nav id="nav">
@@ -41,10 +43,10 @@
 							</div>
 							<div class="col-12">
 								<ul class="actions botoncenter">
-									<li><input type="reset" class="style1" value="Send" /></li>
+									<li><input type="reset" class="style1" value="Send" id="reset-button" /></li>
+									
 								</ul>
 							</div>
-							
 						</div>
 					</form>
 				</div>
@@ -56,6 +58,54 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+			<script>
+				document.addEventListener("DOMContentLoaded", function() {
+					const generatedTextElement = document.getElementById("generated-text");
+					const resetButton = document.getElementById("reset-button");
+					const downloadLink = document.getElementById("download-link");
+			
+					// Función para mostrar el texto letra por letra (efecto de IA)
+					function typeText(text, element, callback) {
+						let index = 0;
+						element.innerHTML = '';  // Limpiamos el contenido previo
+						function type() {
+							if (index < text.length) {
+								element.innerHTML += text.charAt(index);
+								index++;
+								setTimeout(type, 100); // Ajusta la velocidad de aparición del texto
+							} else if (callback) {
+								callback(); // Ejecuta la siguiente función después de que termine de mostrar el texto
+							}
+						}
+						type();
+					}
+			
+					// Mostrar mensaje inicial
+					typeText("Bienvenido a TRAMITAZO", generatedTextElement);
+			
+					// Listener para el botón reset
+					resetButton.addEventListener("click", function() {
+						// Cambia el texto del H1 a "Pensando..."
+						typeText("Pensando...", generatedTextElement, function() {
+							// Después de 3.5 segundos, cambia el texto del H1 a "Aquí tienes tu documento" y dispara la descarga del PDF
+							setTimeout(function() {
+								typeText("Aquí tienes tu documento", generatedTextElement, function() {
+									// Simula un clic en el enlace para descargar el PDF automáticamente
+									downloadLink.click();
+								});
+							}, 3500);
+						});
+					});
+				});
+			</script>
+			
+			
+
+
+			
+			
 
 	</body>
 </html>

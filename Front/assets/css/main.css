@@ -2983,3 +2983,28 @@ input, select, textarea {
 						}
 
 	}
+	.text-container {
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 36px; /* Puedes ajustar el tamaño del h1 aquí */
+		color: #444;
+		padding: 20px;
+		width: 100%;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	
+	.caret {
+		display: inline-block;
+		width: 10px;
+		background-color: #444;
+		animation: blink 1s infinite;
+		margin-left: 2px;
+		height: 36px; /* Ajusta la altura del cursor para coincidir con el tamaño del texto */
+	}
+	
+	@keyframes blink {
+		0% { opacity: 1; }
+		50% { opacity: 0; }
+		100% { opacity: 1; }
+	}
+	
