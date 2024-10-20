@@ -1,0 +1,58 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\title{Tramitazo}
+\author{Castillo Reyes Diego\\Escamilla Reséndiz Aldo\\Muñoz González Eduardo\\Yañez Martínez Marthon Leobardo}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Descripción del problema}
+La burocracia es un sistema de procedimientos administrativos diseñado para gestionar procesos de manera eficiente, caracterizado por una jerarquía y normas escritas. Aunque busca la eficiencia, puede tener desventajas como la rigidez en la toma de decisiones y el riesgo de corrupción. A nivel estatal, promueve la igualdad en el trato administrativo y la defensa de derechos.\cite{ineaf_burocracia}
+
+Además, la falta de estandarización en los procesos y la dependencia de sistemas tradicionales, a menudo manuales, agrava aún más el problema. Esto afecta particularmente a los jóvenes adultos que no están familiarizados con los procedimientos burocráticos y que, en ocasiones, tienen que lidiar con la dificultad añadida de navegar por sistemas mal diseñados o desactualizados. En resumen, la burocracia se ha convertido en una barrera que obstaculiza la vida diaria de las personas, demandando soluciones que agilicen estos trámites de manera más eficiente y accesible.\cite{bid_burocracia}
+
+La lentitud e ineficiencia de los trámites burocráticos también se destacan como problemas persistentes, afectando el bienestar económico y social de los ciudadanos. Estas dificultades han sido señaladas en distintos contextos, donde la burocracia genera retrasos, humillaciones y, en ocasiones, impactos negativos en el desarrollo de los individuos y las instituciones.\cite{economista_burocracia}
+
+\section{Descripción de la solución}
+Como solución a la problemática burocrática, se desarrollo un sistema que utiliza Llama, un avanzado modelo de inteligencia artificial, para simplificar y automatizar la gestión de trámites. El sistema permite que los usuarios carguen una foto de su identificación oficial, ya sea su INE, pasaporte, u otro documento relevante. A partir de esta imagen, Llama es capaz de identificar los datos personales del usuario, como nombre, fecha de nacimiento, CURP y dirección, extrayéndolos de forma precisa y eficiente.
+
+Con esta información, el sistema automáticamente rellena los formularios requeridos por las distintas páginas de trámites gubernamentales, eliminando la necesidad de que el usuario complete manualmente estos documentos. Una vez que el trámite ha sido procesado, el sistema descarga automáticamente el documento solicitado, ya sea una licencia, CURP o cualquier otro archivo oficial. Este enfoque reduce significativamente el tiempo invertido en realizar trámites, aliviando el tedio de la burocracia y permitiendo a los usuarios obtener sus documentos de forma rápida y sin complicaciones adicionales.
+
+\section{Detalles técnicos}
+El proyecto fue desarrollado con una arquitectura sencilla pero eficiente, enfocada en maximizar la facilidad de uso y la rapidez del procesamiento. Python fue elegido como el lenguaje de programación principal por su versatilidad y amplia compatibilidad con bibliotecas de inteligencia artificial y visión por computadora. La parte central del sistema gira en torno al modelo Llama-3.2-11b-vision-preview, un modelo avanzado que combina procesamiento de lenguaje natural con capacidades de visión, lo que permite identificar y extraer datos de imágenes de identificaciones oficiales.
+
+El proceso comienza cuando el usuario carga una imagen de su identificación. El sistema, a través de Llama, procesa la imagen y extrae información clave, como el nombre completo, fecha de nacimiento, y otros datos personales que son necesarios para completar formularios de trámites en línea. Este enfoque elimina la necesidad de que el usuario ingrese manualmente su información, lo que simplifica y agiliza el proceso.
+
+En cuanto al frontend, se desarrolló una interfaz intuitiva y funcional utilizando HTML, SCSS y JavaScript, permitiendo que el usuario interactúe con el sistema de manera rápida y eficiente. La interfaz guía al usuario a través del proceso de carga de su identificación y, posteriormente, el sistema genera y descarga automáticamente el documento requerido una vez que el trámite ha sido completado. Esta automatización no solo ahorra tiempo, sino que también reduce el margen de error asociado con el ingreso manual de datos. 
+
+Este diseño garantiza una solución completa, sencilla de implementar, y escalable para futuras mejoras, enfocada en resolver los problemas burocráticos comunes que enfrentan los usuarios.
+
+\section{Resultados y evaluación}
+Para evaluar el rendimiento del sistema, se implementaron varias pruebas controladas que permitieron medir la precisión y efectividad del procesamiento de datos. Se llevaron a cabo pruebas con diferentes identificaciones, simulando condiciones variadas como calidad de imagen y formatos de documento. Para medir el éxito del sistema, se utilizó como métrica principal la tasa de extracción correcta de datos, que representa el porcentaje de veces que el modelo de IA pudo extraer con precisión todos los datos necesarios para completar un formulario de trámite.
+
+De estas pruebas, el sistema logró devolver los datos correctos en una tasa de éxito del 20\%. En los otros casos, la extracción de datos fue incompleta o errónea, lo que afectó la capacidad del sistema para completar los trámites de manera automática.
+
+\section{Trabajo futuro}
+Los planes a futuro para el sistema buscan expandir sus capacidades para que pueda realizar cualquier tipo de trámite en línea, automatizando completamente el llenado de formularios y formatos. Esto incluye entrenar un modelo capaz de saltar captchas, lo que es clave para muchos trámites en plataformas gubernamentales o privadas.
+
+Además, se pretende implementar un sistema que almacene de forma segura los documentos previamente utilizados en una base de datos encriptada. De esta manera, cuando el usuario realice un nuevo trámite, el sistema podrá reutilizar la información de documentos anteriores, agilizando el proceso. La encriptación será robusta, protegiendo los datos sensibles, y se agregarán avisos de protección para asegurar la privacidad del usuario.
+
+También se plantea un sistema de ranking de trámites, que permitirá a los usuarios ver y compartir su experiencia con base en parámetros como la facilidad del trámite, el trato recibido, y otros aspectos relevantes. Esto creará una comunidad informada y facilitará la toma de decisiones sobre dónde y cómo realizar trámites futuros.
+
+\newpage
+\bibliographystyle{plain}
+\bibliography{Referencias}
+\end{document}
