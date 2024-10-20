@@ -4,7 +4,7 @@ import os
 from groq import Groq
 from langchain_groq import ChatGroq
 from io import BytesIO
-from langchain_community.document_loaders.image import UnstructuredImageLoader
+from langchain.document_loaders.image import UnstructuredImageLoader
 
 os.environ["GROQ_API_KEY"] = "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"
 
