@@ -60,7 +60,7 @@ chat_completion = client.chat.completions.create(
             ],
         }
     ],
-    model="llava-v1.5-7b-4096-preview",
+    model="llama-3.2-11b-vision-preview",
 )
 
 print(chat_completion.choices[0].message.content)
